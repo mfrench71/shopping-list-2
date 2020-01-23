@@ -1,100 +1,106 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
+@section('content')
+    <div class="card">
+        <div class="card-header">Home</div>
+        <div class="card-body">
+            
+            @auth
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+                <div class="row">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+                    <div class="container">
 
-            .full-height {
-                height: 100vh;
-            }
+                        <div class="card-deck">
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+                            {{-- Step 1 --}}
+                            <div class="card border-info">
+                                <div class="card-header text-white bg-info">
+                                    Step 1
+                                    @if ($categories_count)
+                                        <i class="fas fa-check-circle fa-lg pull-right"></i>
+                                    @endif
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Create Product Categories</h5>
+                                    <p class="card-text">Product categories help you group and organise your shopping list items. Create categories such as Dairy, Meat, Frozen, or organise your products by aisle.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="{{ route('categories.create') }}" class="btn btn-sm btn-outline-info">Add</a>
+                                            @if ($categories_count)
+                                                <a href="{{ route('categories.index') }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-            .position-ref {
-                position: relative;
-            }
+                            {{-- Step 2 --}}
+                            <div class="card {{ $categories_count ? 'border-info' : 'border-secondary' }}">
+                                <div class="card-header text-white {{ $categories_count ? 'bg-info' : 'bg-secondary' }}">
+                                    @if ($products_count)
+                                        <i class="fas fa-check-circle fa-lg pull-right"></i>
+                                    @endif
+                                    Step 2
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Add Your Products</h5>
+                                    <p class="card-text">Now that you've created your product categories, you can start adding your products.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        @if ($categories_count)
+                                            <div class="btn-group">
+                                                <a href="{{ route('products.create') }}" class="btn btn-sm btn-outline-info">Add</a>
+                                                @if ($products_count)
+                                                    <a href="{{ route('products.index') }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                @endif
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+                            {{-- Step 3 --}}
+                            <div class="card {{ $products_count ? 'border-info' : 'border-secondary' }}">
+                                <div class="card-header text-white {{ $products_count ? 'bg-info' : 'bg-secondary' }}">
+                                    Step 3
+                                    @if ($shopping_lists_count)
+                                        <i class="fas fa-check-circle fa-lg pull-right"></i>
+                                    @endif
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Create Your Lists!</h5>
+                                    <p class="card-text">This is what it's all about. Create your lists and start adding your products!</p>
+                                </div>
+                                <div class="card-footer">
+                                     <div class="d-flex justify-content-between align-items-center">
+                                        @if ($products_count)
+                                            <div class="btn-group">
+                                                <a href="{{ route('shopping-lists.create') }}" class="btn btn-sm btn-outline-info">Add</a>
+                                                @if ($shopping_lists_count)
+                                                    <a href="{{ route('shopping-lists.index') }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                                @endif
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
 
-            .content {
-                text-align: center;
-            }
+                        </div> {{-- End of card deck --}}
 
-            .title {
-                font-size: 84px;
-            }
+                    </div> {{-- End of container --}}
+            
+                </div> {{-- End of row --}}
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+            @endauth
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+            @guest
+                <a href="{{ route('login') }}">Login</a> or <a href="{{ route('register') }}">Register</a> to manage your Shopping Lists
+            @endguest
+            
+        </div> {{-- End of outer card body --}}
+    </div> {{-- End of outer card --}}
+@endsection

@@ -11,10 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Welcome
+Route::get('/', 'WelcomeController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Shopping Lists
+Route::get('/shopping-lists/{id}/email', 'ShoppingListController@email')->name('shopping-lists.email');
+// Route::get('/shopping-lists/{id}/delete', 'ShoppingListController@destroy')->name('shopping-lists.delete');
+Route::resource('shopping-lists', 'ShoppingListController');
+
+// Products
+Route::resource('products', 'ProductController');
+
+// Categories
+Route::get('/categories/sort', 'CategoryController@sort');
+Route::resource('categories', 'CategoryController');
+
+// Shopping Lists Products
+Route::resource('shopping-lists-products', 'ShoppingList\ProductController');
+Route::get('shopping-lists-products/{id}/essentials', 'ShoppingList\ProductController@updateEssentials')->name('essentials.update');

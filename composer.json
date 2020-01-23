@@ -10,8 +10,11 @@
     "require": {
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
+        "laracasts/flash": "^3.0",
         "laravel/framework": "^6.2",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "laravelcollective/html": "^6.0",
+        "oriceon/toastr-5-laravel": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
