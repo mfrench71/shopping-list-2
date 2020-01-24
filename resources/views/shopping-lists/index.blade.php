@@ -3,7 +3,7 @@
 @section('scripts')
     <script>
         $('.deleteShoppingList').on('click', function(e) {
-            if (confirm('Are you sure you want to delete this list?')) 
+            if (confirm('Are you sure you want to delete this list?'))
             {
                 var dataId = $(this).attr('data-id');
                 var parent = $(this).parent();
@@ -37,7 +37,7 @@
     <div class="card">
         <div class="card-header">
             <i class="fas fa-list-alt"></i> Shopping Lists
-            <a href="{{ route('shopping-lists.create') }}" class="btn btn-info float-right"><i class="fas fa-plus-circle"></i> New List</a>
+            <a href="{{ route('shopping-lists.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus-circle"></i> New List</a>
         </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -62,9 +62,9 @@
                                 <td class="d-none d-sm-table-cell">{{ $shoppingList->created_at->toDayDateTimeString() }}</td>
                                 <td>
                                     {!! Form::open(['method' => 'DELETE', 'route' => ['shopping-lists.destroy', $shoppingList->id]]) !!}
-                                        <a href="{{ route('shopping-lists-products.edit', $shoppingList) }}" class="btn btn-info"><i class="fas fa-eye fa-fw "></i></a>
-                                        <a href="{{ route('shopping-lists.edit', $shoppingList) }}" class="btn btn-info" role="button"><i class="fas fa-edit"></i></a>
-                                        {!! Form::button('<i class="fas fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-info deleteShoppingList', 'data-id' => $shoppingList->id]) !!}
+                                        <a href="{{ route('shopping-lists-products.edit', $shoppingList) }}" class="btn btn-primary"><i class="fas fa-eye fa-fw "></i></a>
+                                        <a href="{{ route('shopping-lists.edit', $shoppingList) }}" class="btn btn-primary" role="button"><i class="fas fa-edit"></i></a>
+                                        {!! Form::button('<i class="fas fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-primary deleteShoppingList', 'data-id' => $shoppingList->id]) !!}
                                     {!! Form::close() !!}
                                 </td>
 

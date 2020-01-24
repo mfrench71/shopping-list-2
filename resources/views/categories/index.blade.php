@@ -2,6 +2,7 @@
 
 @section('scripts')
     <script>
+        // AJAX category sort order
         $(function() {
             $(".sortable-categories").sortable({
                 stop: function() {
@@ -21,8 +22,9 @@
             });
         });
 
+        // AJAX category delete
         $('.deleteCategory').on('click', function(e) {
-            if (confirm('Are you sure you want to delete this category?')) 
+            if (confirm('Are you sure you want to delete this category?'))
             {
                 let dataId = $(this).attr('data-id');
                 let parent = $(this).parent();
@@ -56,7 +58,9 @@
     <div class="card">
         <div class="card-header">
             <i class="fas fa-list-alt"></i> Categories
-            <a href="{{ route('categories.create') }}" class="btn btn-info float-right"><i class="fas fa-plus-circle"></i> New Category</a>
+            <a role="button" class="btn btn-primary float-right" data-toggle="collapse" href="#collapse" aria-expanded="true" aria-controls="collapse">
+                <i class="fas fa-plus-circle"></i> New Category
+            </a>
         </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -79,9 +83,9 @@
                                 <td class="d-none d-sm-table-cell">{{ $category->created_at->toDayDateTimeString() }}</td>
                                 <td>
                                     {!! Form::open(['method' => 'DELETE', 'route' => ['categories.destroy', $category->id]]) !!}
-                                        <a href="{{ route('categories.edit', $category) }}" class="btn btn-info" role="button"><i class="fas fa-edit"></i></a>
+                                        <a href="{{ route('categories.edit', $category) }}" class="btn btn-primary" role="button"><i class="fas fa-edit"></i></a>
                                         @if ($category->title != 'Uncategorised')
-                                            {!! Form::button('<i class="fas fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-info deleteCategory', 'data-id' => $category->id]) !!}
+                                            {!! Form::button('<i class="fas fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-primary deleteCategory', 'data-id' => $category->id]) !!}
                                         @endif
                                     {!! Form::close() !!}
                                 </td>
@@ -91,6 +95,23 @@
                                 <td colspan="6">There are no categories.</td>
                             </tr>
                         @endforelse
+                        <div class="collapse pb-4" id="collapse">
+                            {!! Form::open(['route' => 'categories.store']) !!}
+
+                            <div class="form-group">
+                                {!! Form::label('title', 'Category Title') !!}
+                                {!! Form::text('title', null, ['class' => 'form-control']) !!}
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::label('sort_order', 'Sort Order') !!}
+                                {!! Form::selectRange('sort_order', 0, 10, 0, ['class' => 'form-control']) !!}
+                            </div>
+
+                            {!! Form::submit('Add Category', ['class' => 'btn btn-primary']) !!}
+
+                            {!! Form::close() !!}
+                        </div>
                     </tbody>
                 </table>
             </div>

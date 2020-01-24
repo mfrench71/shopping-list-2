@@ -21,7 +21,7 @@
                     {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
                 </div>
 
-                {!! Form::submit('Update List', ['class' => 'btn btn-info']) !!}
+                {!! Form::submit('Update List', ['class' => 'btn btn-primary']) !!}
 
             {!! Form::close() !!}
 

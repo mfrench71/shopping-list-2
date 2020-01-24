@@ -4,7 +4,7 @@
 
     <div class="card">
         <div class="card-header">
-            <a href="{{route('categories.index')}}"> <i class="fas fa-arrow-circle-left"></i></a> 
+            <a href="{{route('categories.index')}}"> <i class="fas fa-arrow-circle-left"></i></a>
             Categories - Edit Category
             <span class="float-right">Date Added: {{ $category->created_at->toDayDateTImeString() }}</span>
         </div>
@@ -22,7 +22,7 @@
                     {!! Form::selectRange('sort_order', 0, 10, null, ['class' => 'form-control']) !!}
                 </div>
 
-                {!! Form::submit('Update Category', ['class' => 'btn btn-info']) !!}
+                {!! Form::submit('Update Category', ['class' => 'btn btn-primary']) !!}
 
             {!! Form::close() !!}
 

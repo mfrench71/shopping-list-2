@@ -34,7 +34,7 @@
 
                 <div class="form-group row">
                     <div class="col-sm-10">
-                        {!! Form::submit('Add Product', ['class' => 'btn btn-info']) !!}
+                        {!! Form::submit('Add Product', ['class' => 'btn btn-primary']) !!}
                     </div>
                 </div>
 

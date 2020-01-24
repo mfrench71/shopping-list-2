@@ -37,8 +37,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        // Load view
-        return view('categories.create');
+        //
     }
 
     /**
@@ -133,7 +132,7 @@ class CategoryController extends Controller
         // Get query string parameters
         $category_id = request('category_id');
         $sort_order = request('sort_order');
-        
+
         // Update sort order
         foreach ($categories as $category) {
             return Category::where('id', $category_id)->update(['sort_order' => $sort_order]);

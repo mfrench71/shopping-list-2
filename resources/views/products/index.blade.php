@@ -3,7 +3,7 @@
 @section('scripts')
     <script>
         $('.deleteProduct').on('click', function(e) {
-            if (confirm('Are you sure you want to delete this product?')) 
+            if (confirm('Are you sure you want to delete this product?'))
             {
                 var dataId = $(this).attr('data-id');
                 var parent = $(this).parent();
@@ -37,7 +37,7 @@
     <div class="card">
         <div class="card-header">
             <i class="fas fa-list-alt"></i> Products
-            <a href="{{ route('products.create') }}" class="btn btn-info float-right"><i class="fas fa-plus-circle"></i> New Product</a>
+            <a href="{{ route('products.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus-circle"></i> New Product</a>
         </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -64,8 +64,8 @@
                                 <td class="d-none d-sm-table-cell">{{ $product->created_at->toDayDateTimeString() }}</td>
                                 <td>
                                     {!! Form::open(['method' => 'DELETE', 'route' => ['products.destroy', $product->id]]) !!}
-                                        <a href="{{ route('products.edit', $product) }}" class="btn btn-info" role="button"><i class="fas fa-edit"></i></a>
-                                        {!! Form::button('<i class="fas fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-info deleteProduct', 'data-id' => $product->id]) !!}
+                                        <a href="{{ route('products.edit', $product) }}" class="btn btn-primary" role="button"><i class="fas fa-edit"></i></a>
+                                        {!! Form::button('<i class="fas fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-primary deleteProduct', 'data-id' => $product->id]) !!}
                                     {!! Form::close() !!}
                                 </td>
                             </tr>

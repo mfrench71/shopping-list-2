@@ -60,8 +60,8 @@
                                     </div>
                                     <div class="card-footer">
                                         @if (count($products_in_list))
-                                            {!! Form::button('<i class="fas fa-minus-circle"></i> Remove Selected', ['type' => 'submit', 'class' => 'btn btn-info btn-sm pull-right']) !!}
-                                            <a class="btn btn-info btn-sm pull-right mr-2" href="{{ route('shopping-lists.email', $shoppingList) }}"><i class="fas fa-envelope"></i> Email List</a>
+                                            {!! Form::button('<i class="fas fa-minus-circle"></i> Remove Selected', ['type' => 'submit', 'class' => 'btn btn-primary btn-sm pull-right']) !!}
+                                            <a class="btn btn-primary btn-sm pull-right mr-2" href="{{ route('shopping-lists.email', $shoppingList) }}"><i class="fas fa-envelope"></i> Email List</a>
                                         @endif
                                     </div>
                                 </div>
@@ -85,7 +85,7 @@
                                                     <div class="col">
                                                         @if ($product->essential)
                                                             <span class="essential">{{ $product->title}}</span>
-                                                        @else 
+                                                        @else
                                                             {{ $product->title}}
                                                         @endif
                                                     </div>
@@ -100,8 +100,8 @@
                                     </div>
                                      <div class="card-footer">
                                         @if (count($products_available))
-                                            {!! Form::button('<i class="fas fa-plus-circle"></i> Add Selected', ['type' => 'submit', 'name' => 'action', 'value' => 'add_products', 'class' => 'btn btn-info btn-sm pull-right']) !!}
-                                            {!! Form::button('<i class="fas fa-plus-circle"></i> Add Essentials', ['type' => 'submit', 'name' => 'action', 'value' => 'add_essentials', 'class' => 'btn btn-info btn-sm pull-right mr-2']) !!}
+                                            {!! Form::button('<i class="fas fa-plus-circle"></i> Add Selected', ['type' => 'submit', 'name' => 'action', 'value' => 'add_products', 'class' => 'btn btn-primary btn-sm pull-right']) !!}
+                                            {!! Form::button('<i class="fas fa-plus-circle"></i> Add Essentials', ['type' => 'submit', 'name' => 'action', 'value' => 'add_essentials', 'class' => 'btn btn-primary btn-sm pull-right mr-2']) !!}
                                         @endif
                                      </div>
                                 </div>
