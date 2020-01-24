@@ -17,11 +17,6 @@
                     {!! Form::text('title', null, ['class' => 'form-control', $category->title == 'Uncategorised' ? 'readonly' : '']) !!}
                 </div>
 
-                <div class="form-group">
-                    {!! Form::label('sort_order', 'Sort Order') !!}
-                    {!! Form::selectRange('sort_order', 0, 10, null, ['class' => 'form-control']) !!}
-                </div>
-
                 {!! Form::submit('Update Category', ['class' => 'btn btn-primary']) !!}
 
             {!! Form::close() !!}

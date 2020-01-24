@@ -103,11 +103,6 @@
                                 {!! Form::text('title', null, ['class' => 'form-control']) !!}
                             </div>
 
-                            <div class="form-group">
-                                {!! Form::label('sort_order', 'Sort Order') !!}
-                                {!! Form::selectRange('sort_order', 0, 10, 0, ['class' => 'form-control']) !!}
-                            </div>
-
                             {!! Form::submit('Add Category', ['class' => 'btn btn-primary']) !!}
 
                             {!! Form::close() !!}
