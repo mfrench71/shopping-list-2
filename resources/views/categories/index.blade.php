@@ -83,8 +83,8 @@
                                 <td class="d-none d-sm-table-cell">{{ $category->created_at->toDayDateTimeString() }}</td>
                                 <td>
                                     {!! Form::open(['method' => 'DELETE', 'route' => ['categories.destroy', $category->id]]) !!}
-                                        <a href="{{ route('categories.edit', $category) }}" class="btn btn-primary" role="button"><i class="fas fa-edit"></i></a>
                                         @if ($category->title != 'Uncategorised')
+                                            <a href="{{ route('categories.edit', $category) }}" class="btn btn-primary" role="button"><i class="fas fa-edit"></i></a>
                                             {!! Form::button('<i class="fas fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-primary deleteCategory', 'data-id' => $category->id]) !!}
                                         @endif
                                     {!! Form::close() !!}
